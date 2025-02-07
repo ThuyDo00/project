@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="/admin/layout_admin :: layoutadmin">
+<head>
+    <meta charset="utf-8">
+    <title>INDEX</title>
+</head>
+
+<body>
+
+<!-- Main content -->
+<section class="content" th:fragment="content" >
+
+    <!-- Default box -->
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title" th:text="${title}"></h3>
+
+            <div class="box-body">
+                <div class="box-header">
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body table-responsive no-padding">
+                        <form role="form" method="post" th:action="@{/admin/addcourselist}" th:object="${data1}">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label for="exampleInputName">Course Name</label>
+                                    <input type="text" class="form-control" id="exampleInputName" placeholder="Enter name" th:field="${data1.name}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputesDes">Description</label>
+                                    <input type="text" class="form-control" id="exampleInputesDes" placeholder="Enter Description" th:field="${data1.description}">
+                                </div>
+                                <div>
+                                    <label for="file">Choose an image to upload:</label>
+                                    <input type="file" id="file" name="file" accept="image/*" required th:field="${data1.art}">
+                                </div>
+
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox"> Check
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="box-footer">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+                </div>
+            </div>
+            <!-- /.box-body -->
+
+
+        </div>
+    </div>
+    <!-- /.box -->
+
+</section>
+
+<!-- /.content -->
+
+</body>
+</html>

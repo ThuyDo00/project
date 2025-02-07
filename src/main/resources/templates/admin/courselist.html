@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="/admin/layout_admin :: layoutadmin">
+<head>
+    <meta charset="utf-8">
+    <title>INDEX</title>
+</head>
+
+<body>
+
+<!-- Main content -->
+<section class="content" th:fragment="content" >
+
+    <!-- Default box -->
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title" th:text="${title}"></h3>
+
+            <div class="box-tools pull-right">
+                <a th:href="@{/admin/addcourselist.html}" class="btn btn-success" aria-label="Add new course">Thêm mới</a>
+
+            </div>
+            <div class="box-tools">
+                <form>
+                <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
+
+                        <input type="text" name="keyword" class="form-control pull-right" placeholder="Search">
+                        <div class="input-group-btn">
+                            <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                        </div>
+                </div>
+                </form>
+        </div>
+        <div class="box-body">
+            <div class="box-header">
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+                <table class="table table-hover">
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Art</th>
+                        <th>Creat_at</th>
+                        <th>Update_at</th>
+                        <th>Status</th>
+                    </tr>
+                    <tr th:each="p : ${data}">
+                        <td th:text="${p.id}"></td>
+                        <td th:text="${p.name}"></td>
+                        <td th:text="${p.description}"></td>
+                        <td th:text="${p.art}"></td>
+                        <td th:text="${p.createdAt}"></td>
+                        <td th:text="${p.updatedAt}"></td>
+                        <td th:if="${p.status }">YES</td>
+
+                    </tr>
+
+                </table>
+                <div>
+                    <p>Page: <span th:text="${currentPage + 1}"></span> / <span th:text="${totalPages}"></span></p>
+                    <div>
+                        <a th:href="@{/categories?page=0&size=10}">First</a> |
+                        <a th:href="@{/categories?page=${currentPage - 1}&size=10}" th:if="${currentPage > 0}">Previous</a> |
+                        <a th:href="@{/categories?page=${currentPage + 1}&size=10}" th:if="${currentPage < totalPages - 1}">Next</a> |
+                        <a th:href="@{/categories?page=${totalPages - 1}&size=10}" th:if="${currentPage < totalPages - 1}">Last</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer">
+            <div class="box-footer clearfix">
+                <ul class="pagination pagination-sm no-margin pull-right">
+                    <li><a href="#">&laquo;</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">&raquo;</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- /.box-footer-->
+    </div>
+    </div>
+    <!-- /.box -->
+
+</section>
+
+<!-- /.content -->
+
+</body>
+</html>
